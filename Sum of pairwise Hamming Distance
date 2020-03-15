@@ -1,0 +1,28 @@
+Given an array of N non-negative integers, find the sum of hamming distances of all pairs of integers in the array.
+Return the answer modulo 1000000007.
+
+#The solution is Below:-
+
+int Solution::hammingDistance(const vector<int> &B) {
+    vector<int> A(B) ;
+    long long int X = 0 , Y = 0 , summ = 0 ;
+    for( int i = 0 ; i < 31 ; i++ ){
+        X = 0  ;
+        Y = 0 ;
+        for( int j =  0 ; j < A.size() ; j++ ){
+            
+            if( A[j]&1 ){
+                X++ ;
+                A[j] = A[j] >> 1 ;
+            }else {
+                Y++ ;
+                A[j] = A[j] >> 1 ;
+            }
+        }
+        summ += 2*X*Y ; 
+    }
+    
+    long long int ans = summ%1000000007 ;
+    return ans ;
+    
+}
